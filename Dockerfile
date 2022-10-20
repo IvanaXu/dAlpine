@@ -9,9 +9,7 @@ ADD . /
 WORKDIR /
 
 ## 在构建镜像时安装依赖包
-RUN apk add --no-cache python3 python3-dev py-pip
-RUN apk add --no-cache build-base gfortran cmake openblas-dev
-RUN pip3 install -i https://pypi.org/simple -r requirements.txt
+RUN apk add --no-cache python3 python3-dev py-pip build-base gfortran cmake openblas-dev && rm -rf /var/cache/apk/* && pip3 install -i https://pypi.org/simple -r requirements.txt
 
 ## 镜像启动后统一执行 sh run.sh
 CMD ["sh", "run.sh"]
