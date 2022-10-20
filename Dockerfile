@@ -1,6 +1,6 @@
 # Base Images
 ## 从天池基础镜像构建
-FROM alpine
+FROM alpine:3.16
 
 ## 把当前文件夹里的文件构建到镜像的根目录下
 ADD . /
@@ -9,7 +9,8 @@ ADD . /
 WORKDIR /
 
 ## 在构建镜像时安装依赖包
-RUN apk add python3 python3-dev py-pip build-base 
+RUN apk add --no-cache python3 python3-dev py-pip
+RUN apk add --no-cache build-base gfortran cmake openblas-dev
 RUN pip3 install -i https://pypi.org/simple -r requirements.txt
 
 ## 镜像启动后统一执行 sh run.sh
