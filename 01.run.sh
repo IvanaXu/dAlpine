@@ -1,1 +1,1 @@
-python3 -c "import pandas as pd"
+python3 01.run.py
